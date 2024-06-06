@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34090564-0f28-4c4a-ae7b-5fa9f19236f3" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/test_Tue_Jun__4_19_00_54_2024.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/test_Tue_Jun__4_19_02_58_2024.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/NUAA-SIRST/img_idx/test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/NUAA-SIRST/img_idx/train.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference.py" beforeDir="false" afterPath="$PROJECT_DIR$/inference.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/NUAA-SIRST/ACM_400.pth.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/WideIRSTD/DNANet_100.pth.tar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,11 +69,15 @@
       <option name="presentableId" value="Default" />
       <updated>1717496448754</updated>
       <workItem from="1717496449912" duration="5267000" />
-      <workItem from="1717673536223" duration="1982000" />
+      <workItem from="1717673536223" duration="4378000" />
+      <workItem from="1717679867626" duration="344000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/wshIRSTD$.coverage" NAME=" 覆盖结果" MODIFIED="1717678266036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

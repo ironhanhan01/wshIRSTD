@@ -1,0 +1,2 @@
+WideIRSTD/DNANet_100.pth.tarWideIRSTD
+
