@@ -74,6 +74,35 @@ class TestSetLoader(Dataset):
     def __len__(self):
         return len(self.test_list) 
 
+# class InferenceSetLoader(Dataset):
+#     def __init__(self, dataset_dir, train_dataset_name, test_dataset_name, img_norm_cfg=None):
+#         super(InferenceSetLoader).__init__()
+#         self.dataset_dir = dataset_dir + '/' + test_dataset_name
+#         with open(self.dataset_dir + '/img_idx/test' + '.txt', 'r') as f:
+#             self.test_list = f.read().splitlines()
+#         if img_norm_cfg == None:
+#             self.img_norm_cfg = get_img_norm_cfg(train_dataset_name, dataset_dir)
+#         else:
+#             self.img_norm_cfg = img_norm_cfg
+#
+#     def __getitem__(self, idx):
+#         try:
+#             img = Image.open((self.dataset_dir + '/images/' + self.test_list[idx] + '.png').replace('//','/')).convert('I')
+#         except:
+#             img = Image.open((self.dataset_dir + '/images/' + self.test_list[idx] + '.bmp').replace('//','/')).convert('I')
+#         img = Normalized(np.array(img, dtype=np.float32), self.img_norm_cfg)
+#
+#         h, w = img.shape
+#         img = PadImg(img)
+#
+#         img = img[np.newaxis,:]
+#
+#         img = torch.from_numpy(np.ascontiguousarray(img))
+#         return img, [h,w], self.test_list[idx]
+#     def __len__(self):
+#         return len(self.test_list)
+
+
 class InferenceSetLoader(Dataset):
     def __init__(self, dataset_dir, train_dataset_name, test_dataset_name, img_norm_cfg=None):
         super(InferenceSetLoader).__init__()
@@ -84,23 +113,31 @@ class InferenceSetLoader(Dataset):
             self.img_norm_cfg = get_img_norm_cfg(train_dataset_name, dataset_dir)
         else:
             self.img_norm_cfg = img_norm_cfg
-        
+
     def __getitem__(self, idx):
         try:
-            img = Image.open((self.dataset_dir + '/images/' + self.test_list[idx] + '.png').replace('//','/')).convert('I')
+            img = Image.open((self.dataset_dir + '/images/' + self.test_list[idx] + '.png').replace('//', '/')).convert(
+                'I')
         except:
-            img = Image.open((self.dataset_dir + '/images/' + self.test_list[idx] + '.bmp').replace('//','/')).convert('I')
+            img = Image.open((self.dataset_dir + '/images/' + self.test_list[idx] + '.bmp').replace('//', '/')).convert(
+                'I')
+        size = img.size
+        if size[0] > 1024 or size[1] > 1024:
+            img = img.resize((1024, 1024))
         img = Normalized(np.array(img, dtype=np.float32), self.img_norm_cfg)
-        
-        h, w = img.shape
+
         img = PadImg(img)
-        
-        img = img[np.newaxis,:]
-        
+
+        img = img[np.newaxis, :]
+
         img = torch.from_numpy(np.ascontiguousarray(img))
-        return img, [h,w], self.test_list[idx]
+        return img, size, self.test_list[idx]
+
     def __len__(self):
-        return len(self.test_list) 
+        return len(self.test_list)
+
+
+
 
 
 class EvalSetLoader(Dataset):
@@ -146,3 +183,6 @@ class augumentation(object):
             input = input.transpose(1, 0)
             target = target.transpose(1, 0)
         return input, target
+
+
+img_save =img_save.resize((size[0],size[1]))
